@@ -1,0 +1,4 @@
+GET http://localhost:8501/swagger/library-service-1.0.yml
+Content-Type: application/json
+
+###

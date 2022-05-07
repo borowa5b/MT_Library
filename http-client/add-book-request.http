@@ -1,0 +1,15 @@
+POST http://localhost:8501/books
+Content-Type: application/json
+
+{
+  "title": "Random book1222",
+  "description": "description",
+  "author": "Random author",
+  "year": "2020",
+  "publisher": "Random publisher",
+  "content": "Random content",
+  "pages": 200,
+  "quantity": 5
+}
+
+###

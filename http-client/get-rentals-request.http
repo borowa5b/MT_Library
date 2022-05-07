@@ -1,0 +1,4 @@
+GET http://localhost:8501/rentals?pageNumber=0
+Content-Type: application/json
+
+###

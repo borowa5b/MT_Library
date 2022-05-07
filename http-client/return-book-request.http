@@ -1,0 +1,4 @@
+POST http://localhost:8501/rentals/RL582183762826094055/return
+Content-Type: application/json
+
+###

@@ -1,7 +1,36 @@
-micronaut:
+.micronaut:
   application:
     name: Library
+  server:
+    port: 8501
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
+      swagger-ui:
+        paths: classpath:META-INF/swagger/views/swagger-ui
+        mapping: /swagger-ui/**
 netty:
   default:
     allocator:
       max-order: 3
+datasources:
+  default:
+    url: ${JDBC_URL:`jdbc:h2:./data/library;AUTO_SERVER=TRUE`}
+    username: ${JDBC_USER:user}
+    password: ${JDBC_PASSWORD:pass}
+    driverClassName: ${JDBC_DRIVER:org.h2.Driver}
+jpa:
+  default:
+    entity-scan:
+      packages: 'pl.uz.mt.library'
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        show_sql: true
+jackson:
+  serialization:
+    write_dates_as_timestamps: false
+  serialization-inclusion: non_null

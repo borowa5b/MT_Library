@@ -1,0 +1,4 @@
+GET http://localhost:8501/books?pageNumber=1
+Content-Type: application/json
+
+###
