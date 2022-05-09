@@ -6,10 +6,10 @@ import io.micronaut.data.model.Pageable
 import jakarta.inject.Singleton
 import pl.uz.mt.library.application.exception.BookNotFoundException
 import pl.uz.mt.library.application.filter.PageFilter
+import pl.uz.mt.library.books.application.command.AddBookCommand
 import pl.uz.mt.library.books.application.dto.BookDto
 import pl.uz.mt.library.books.application.exception.BookAlreadyExistsException
 import pl.uz.mt.library.books.application.exception.BookOutOfStockException
-import pl.uz.mt.library.books.application.request.AddBookRequest
 import pl.uz.mt.library.books.domain.event.BookRemovedEvent
 import pl.uz.mt.library.books.domain.repository.BookRepository
 import pl.uz.mt.library.books.infrastructure.BookIdGenerator
@@ -24,21 +24,21 @@ open class BookService(
 ) {
 
     @Transactional
-    open fun addBook(addBookRequest: AddBookRequest): String {
-        val bookTitle = addBookRequest.title!!
+    open fun addBook(command: AddBookCommand): String {
+        val bookTitle = command.title
         if (bookRepository.findByTitle(bookTitle) != null) throw BookAlreadyExistsException(bookTitle)
 
         val bookDto = BookDto(
             bookIdGenerator.generate(),
             bookTitle,
-            addBookRequest.description!!,
-            addBookRequest.author!!,
-            addBookRequest.year!!,
-            addBookRequest.publisher!!,
-            addBookRequest.content!!,
-            addBookRequest.pages!!,
-            addBookRequest.quantity!!,
-            addBookRequest.quantity
+            command.description,
+            command.author,
+            command.year,
+            command.publisher,
+            command.content,
+            command.pages,
+            command.quantity,
+            command.quantity
         )
         return bookRepository.save(bookDto).id
     }

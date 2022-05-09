@@ -48,16 +48,16 @@ object Validator {
     fun isGreaterOrEqualThan(
         field: Int,
         fieldName: String,
-        greaterOrThan: Int,
+        greaterOrEqualThan: Int,
         exceptionHandler: ExceptionHandler
     ) {
-        if (field < greaterOrThan) {
+        if (field < greaterOrEqualThan) {
             exceptionHandler.add(
                 ValidationErrorException(
                     ValidationExceptionErrorType.GREATER_OR_EQUAL_THAN.type,
                     ValidationExceptionErrorType.GREATER_OR_EQUAL_THAN.message
                         .replace("{0}", fieldName)
-                        .replace("{1}", greaterOrThan.toString())
+                        .replace("{1}", greaterOrEqualThan.toString())
                 )
             )
         }

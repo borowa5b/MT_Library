@@ -1,6 +1,7 @@
 package pl.uz.mt.library.books.application.request
 
 import pl.uz.mt.library.application.exception.ValidationException
+import pl.uz.mt.library.books.application.command.AddBookCommand
 import pl.uz.mt.library.books.application.dto.BookDto
 import pl.uz.mt.library.domain.validation.AggregatingExceptionHandler
 
@@ -21,4 +22,7 @@ data class AddBookRequest(
             throw ValidationException(exceptionHandler.exceptionErrors)
         }
     }
+
+    fun toCommand(): AddBookCommand =
+        AddBookCommand(title!!, description!!, author!!, year!!, publisher!!, content!!, pages!!, quantity!!)
 }

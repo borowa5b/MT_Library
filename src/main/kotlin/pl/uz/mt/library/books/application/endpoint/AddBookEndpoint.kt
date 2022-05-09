@@ -36,7 +36,7 @@ class AddBookEndpoint(private val bookService: BookService) {
     @Post(consumes = [MediaType.APPLICATION_JSON], produces = [MediaType.APPLICATION_JSON])
     fun addBook(@Body request: AddBookRequest): HttpResponse<AddBookResponse> {
         request.validate()
-        val addedBookId = bookService.addBook(request)
+        val addedBookId = bookService.addBook(request.toCommand())
         return HttpResponse.created(AddBookResponse(addedBookId))
     }
 }
