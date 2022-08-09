@@ -38,6 +38,7 @@ dependencies {
     implementation("io.micronaut.sql:micronaut-hibernate-jpa")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     runtimeOnly("com.h2database:h2")
+    runtimeOnly group: 'org.postgresql', name: 'postgresql', version: '42.2.13'
 
     // JSON
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -53,7 +54,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("pl.uz.mt.library.ApplicationKt")
+    mainClass.set("pl.uz.mt.library.LibraryApplicationKt")
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("11")

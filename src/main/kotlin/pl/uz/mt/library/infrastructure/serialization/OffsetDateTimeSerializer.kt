@@ -1,4 +1,4 @@
-package pl.uz.mt.library.rental.infrastructure.serialization
+package pl.uz.mt.library.infrastructure.serialization
 
 import com.fasterxml.jackson.core.JsonGenerator
 import com.fasterxml.jackson.databind.JsonSerializer

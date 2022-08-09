@@ -1,5 +1,6 @@
 package pl.uz.mt.library.books.helpers
 
+import pl.uz.mt.library.books.application.command.AddBookCommand
 import pl.uz.mt.library.books.application.dto.BookDto
 import pl.uz.mt.library.books.application.request.AddBookRequest
 import pl.uz.mt.library.books.application.response.BookResponse
@@ -71,6 +72,17 @@ object BooksObjects {
         pages: Int = 100,
         quantity: Int = 100
     ): AddBookRequest = AddBookRequest(title, description, author, year, publisher, content, pages, quantity)
+
+    fun addBookCommand(
+        title: String = "title",
+        description: String = "description",
+        author: String = "author",
+        year: String = "year",
+        publisher: String = "publisher",
+        content: String = "content",
+        pages: Int = 100,
+        quantity: Int = 100
+    ): AddBookCommand = AddBookCommand(title, description, author, year, publisher, content, pages, quantity)
 
     fun bookResponse(
         id: String = "BK123123123123",

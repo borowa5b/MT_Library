@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
 import org.mockito.junit.jupiter.MockitoExtension
-import pl.uz.mt.library.books.helpers.BooksObjects.addBookRequest
+import pl.uz.mt.library.books.helpers.BooksObjects.addBookCommand
 import pl.uz.mt.library.books.helpers.BooksObjects.bookDto
 import pl.uz.mt.library.books.helpers.repository.InMemoryBookRepository
 import pl.uz.mt.library.books.infrastructure.BookIdGenerator
@@ -31,14 +31,14 @@ internal class BookServiceTest {
     @Test
     fun shouldAddBook() {
         // given
-        val request = addBookRequest()
+        val command = addBookCommand()
 
         // when
-        val result = service.addBook(request)
+        val result = service.addBook(command)
 
         // then
         assert(result.isNotBlank())
-        assert(repository.findByTitle(request.title!!) != null)
+        assert(repository.findByTitle(command.title) != null)
     }
 
     @Test
